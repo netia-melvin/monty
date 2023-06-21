@@ -84,4 +84,5 @@ void push_error(FILE *fd, char *line, stack_t *stack, int line_number);
 void instr_error(FILE *fd, char *line, stack_t *stack, char *val, int line_number);
 int _isdigit(char *c);
 stack_t *createNode(int n);
+void f_pstr(stack_t **head, unsigned int counter);
 #endif

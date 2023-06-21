@@ -1,26 +1,39 @@
 #include "monty.h"
-/**
-  *f_rotr- rotates the stack to the bottom
-  *@head: stack head
-  *@counter: line_number
-  *Return: no return
- */
-void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
-{
-	stack_t *copy;
 
-	copy = *head;
-	if (*head == NULL || (*head)->next == NULL)
+/**
+ * _free - free stack
+ * @stack: stack
+ */
+
+void _free(stack_t *stack)
+{
+stack_t *list = NULL;
+
+	list = stack;
+
+	if (list != NULL)
 	{
-		return;
+		_free(list->next);
+		free(list);
 	}
-	while (copy->next)
+
+}
+
+/**
+ * clean_stack - Free all and close files
+ * @stack: Stack
+ */
+
+void clean_stack(stack_t **stack)
+{
+	stack_t *tmp = *stack;
+
+	while (tmp)
 	{
-		copy = copy->next;
+		tmp = *stack;
+		*stack = (*stack)->next;
+		free(tmp);
 	}
-	copy->next = *head;
-	copy->prev->next = NULL;
-	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+	fclose(cmd.fd);
+	free(cmd.line);
 }

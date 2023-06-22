@@ -24,4 +24,3 @@ int _isdigit(char *c)
 	}
 	return (1);
 }
-
